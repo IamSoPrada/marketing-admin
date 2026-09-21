@@ -37,7 +37,7 @@ const metrics = computed(() => [
     value: counts.value.draft,
     hint: counts.value.draft > 0 ? 'Требуют внимания' : 'Всё опубликовано',
     icon: Clock3,
-    tone: 'bg-warning/15 text-warning-foreground',
+    tone: 'bg-warning/15 text-warning',
     to: '/collections'
   },
   {

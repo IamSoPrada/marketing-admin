@@ -309,7 +309,7 @@ function confirmLeave() {
             :class="
               cn(
                 'rounded-lg px-3 py-2 text-sm tabular-nums',
-                step1Valid ? 'bg-success/10 text-success' : 'bg-warning/15 text-warning-foreground'
+                step1Valid ? 'bg-success/10 text-success' : 'bg-warning/15 text-warning'
               )
             "
             role="status"
@@ -417,7 +417,7 @@ function confirmLeave() {
           </div>
         </div>
 
-        <p v-if="!step1Valid" class="rounded-lg bg-warning/15 px-3.5 py-2.5 text-sm text-warning-foreground" role="alert">
+        <p v-if="!step1Valid" class="rounded-lg bg-warning/15 px-3.5 py-2.5 text-sm text-warning" role="alert">
           Для продолжения добавьте ещё {{ MIN_COLLECTION_ITEMS - form.itemIds.length }} {{ MIN_COLLECTION_ITEMS - form.itemIds.length === 1 ? 'название' : 'названий' }}.
         </p>
       </div>
