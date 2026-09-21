@@ -47,6 +47,7 @@ export default defineNuxtConfig({
         '/employees',
         '/roles',
         '/settings',
+        '/profile',
         '/sign-in',
         '/sign-up',
         '/two-factor',
