@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { Bell, ChevronDown, ChevronRight, LogOut, Settings2, UserRound } from 'lucide-vue-next'
+import { Bell, ChevronDown, ChevronRight, LogOut, Moon, Settings2, Sun, UserRound } from 'lucide-vue-next'
 import { useNotificationsStore } from '@/common/shared/state/notifications'
+import { useTheme } from '@/common/shared/utils/theme'
 import { formatDateTime } from '@/common/shared/utils/format'
 import Popover from '@/common/shared/UI/Popover.vue'
 import DropdownMenu from '@/common/shared/UI/DropdownMenu.vue'
@@ -15,6 +16,7 @@ import { cn } from '@/common/shared/utils/cn'
 
 const route = useRoute()
 const notificationsStore = useNotificationsStore()
+const { theme, toggle: toggleTheme } = useTheme()
 
 const pageTitles: Record<string, { title: string; subtitle: string }> = {
   '/overview': { title: 'Обзор', subtitle: 'Состояние рабочего пространства и быстрые действия' },
@@ -49,6 +51,16 @@ const typeBadge: Record<string, 'success' | 'default' | 'warning'> = {
     </div>
 
     <div class="flex shrink-0 items-center gap-2">
+      <!-- Переключатель темы -->
+      <button
+        class="flex size-10 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        :aria-label="theme === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему'"
+        @click="toggleTheme"
+      >
+        <Sun v-if="theme === 'dark'" class="size-5" aria-hidden="true" />
+        <Moon v-else class="size-5" aria-hidden="true" />
+      </button>
+
       <!-- Уведомления -->
       <Popover class="w-96">
         <template #trigger>

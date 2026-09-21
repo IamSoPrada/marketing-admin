@@ -25,7 +25,14 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Playmarket Admin',
-      htmlAttrs: { lang: 'ru' }
+      htmlAttrs: { lang: 'ru' },
+      script: [
+        {
+          // Применяем сохранённую/системную тему до первой отрисовки, чтобы не было вспышки светлой темы
+          innerHTML:
+            "try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}"
+        }
+      ]
     }
   },
   nitro: {
